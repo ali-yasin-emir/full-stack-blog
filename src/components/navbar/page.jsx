@@ -10,7 +10,7 @@ const Navbar = () => {
         <div className="flex gap-4">
             <Link href='/'><Image src='/facebook.svg' alt="facebook icon" width={24} height={24} /></Link>
             <Link href='/'><Image className="rounded-full" src='/instagram.svg' alt="instagram icon" width={24} height={24} /></Link>
-            <Link href='/'><Image className="rounded-full p-1 bg-white" src='/tiktok2.svg' alt="tiktok icon" width={24} height={24} /></Link>
+            <Link href='/'><Image className="rounded-full p-1 bg-white" src='/tiktok.svg' alt="tiktok icon" width={24} height={24} /></Link>
             <Link href='/'><Image className="rounded-full p-1 bg-white" src='/youtube.svg' alt="youtube icon" width={24} height={24} /></Link>        
         </div>
             <div>reacton_blog</div>
