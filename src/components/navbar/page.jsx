@@ -4,6 +4,8 @@ import Image from "next/image"
 import Link from "next/link"
 import { useState } from "react";
 import { RxHamburgerMenu } from "react-icons/rx";
+import { useContext } from "react";
+import { ThemeContext } from "@/context/ThemeContext";
 
 
 const menu = [
@@ -25,14 +27,13 @@ const menu = [
   }
 ]
 
-
-
 const Navbar = () => {
 
   // Sidemenu Functionality
   const [isSideMenuOpen, setIsSideMenuOpen] = useState(false);
 
-
+  // DarkMode Functionality
+  const {toggle, mode} = useContext(ThemeContext)
 
   return (
     <div className="bg-slate-400 w-full p-4">
@@ -44,9 +45,9 @@ const Navbar = () => {
             <Link href='https://www.youtube.com'><Image className="rounded-full p-1 bg-white" src='/youtube.svg' alt="youtube icon" width={24} height={24} /></Link>        
         </div>
             <Link href='/'>Reacton Blog</Link>
-            <div className="flex gap-4">
-              <div className="flex bg-slate-500 rounded-full border-2 px-1 border-black relative cursor-pointer items-center justify-between">
-                <div className="flex w-[20px] h-[20px] bg-slate-950 rounded-full absolute"/>
+            <div className='flex gap-4'>
+              <div onClick={toggle} className={`flex bg-slate-500 rounded-full border-2 px-1 border-black relative cursor-pointer items-center justify-between`}>
+                <div className={`flex w-[18px] h-[18px] bg-slate-950 rounded-full absolute ${mode === 'dark' ? 'left-[6px]' : 'right-[6px]'}`}/>
                 <div>🌙</div>
                 <div>🔆</div>
               </div>

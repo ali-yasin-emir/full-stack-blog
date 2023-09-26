@@ -4,7 +4,7 @@ export default function Home() {
 
 
   return (
-   <div className='bg-slate-600 h-screen'>
+   <div className='h-screen'>
     <div className="max-container flex flex-col py-36 max-md:py-24 max-md:px-6">
       <h1 className="text-4xl leading-relaxed font-bold pb-6 max-md:text-3xl">Hey, Reacton dev here!
       <br />

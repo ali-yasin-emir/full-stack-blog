@@ -17,6 +17,20 @@ a{
   color: inherit;
 }
 
+.theme{
+transition: ease all 1s;
+}
+
+.dark{
+ background-color: #111;
+ color: #bbb; 
+}
+
+.light{
+background-color: white;
+color: #111;
+}
+
 @layer components {
   .max-container {
     max-width: 1240px;
