@@ -1,21 +1,23 @@
 import Image from "next/image";
 
 export default function Home() {
+
+
   return (
    <div className='bg-slate-600 h-screen'>
-    <div className="max-container flex flex-col py-24 max-md:px-6">
+    <div className="max-container flex flex-col py-36 max-md:py-24 max-md:px-6">
       <h1 className="text-4xl leading-relaxed font-bold pb-6 max-md:text-3xl">Hey, Reacton dev here!
       <br />
           <span className="text-4xl leading-relaxed font-normal max-md:text-2xl">Discover my stories and creative ideas.</span>
       </h1>
-
+      
       {/* ITEMS */}
       <div className="flex flex-col gap-8">
         {/* ITEM */}
         <div className="flex bg-slate-400 max-md:bg-transparent max-md:flex-col min-h-[420px] max-md:h-[620px]"> 
         {/* ITEM Image Box */}
         <div className="relative flex flex-1">
-          <Image src='/main_1.jpg' fill alt="main image" className='object-cover'/>
+          <Image src='/main_1.jpg' fill alt="main image" className='object-cover absolute'/>
         </div>
         {/* ITEM Text Box */}
         <div className="flex flex-1 flex-col gap-6 justify-center items-center">
