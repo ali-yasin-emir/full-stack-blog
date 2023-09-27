@@ -2,7 +2,7 @@
 
 import Image from "next/image"
 import Link from "next/link"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { useContext } from "react";
 import { ThemeContext } from "@/context/ThemeContext";
@@ -35,8 +35,26 @@ const Navbar = () => {
   // DarkMode Functionality
   const {toggle, mode} = useContext(ThemeContext)
 
+  // Sticky Navbar
+  const [isNavbarFixed, setIsNavbarFixed] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 75) {
+        setIsNavbarFixed(true);
+      } else {
+        setIsNavbarFixed(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
-    <div className="w-full p-4">
+    <div className={`fixed w-full p-4 z-10 scroll-smooth bg-transparent ${isNavbarFixed ? 'backdrop-filter backdrop-blur-lg transition-all duration-300' : ''}`}>
         <div className="max-container flex justify-between max-md:px-2">
         <div className="flex gap-4 max-md:hidden">
             <Link href='https://facebook.com'><Image src='/facebook.svg' alt="facebook icon" width={24} height={24} /></Link>
@@ -61,7 +79,7 @@ const Navbar = () => {
             </div>
                 <RxHamburgerMenu onClick={() => setIsSideMenuOpen(!isSideMenuOpen)} className="w-6 h-6 cursor-pointer hidden max-md:block z-20"/>
                   { isSideMenuOpen &&
-                <div className="absolute top-0 right-0 w-1/2 h-screen hidden max-md:block bg-opacity-30 backdrop-filter backdrop-blur-lg rounded-l-lg z-10">
+                <div className="absolute top-0 right-0 w-1/2 h-screen hidden max-md:block bg-opacity-30 backdrop-filter backdrop-blur-xl rounded-l-lg z-10">
   
                   <div className="pt-20 flex flex-col gap-4"> 
                 {

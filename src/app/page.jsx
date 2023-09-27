@@ -37,7 +37,7 @@ export default function Home() {
 
   return (
    <div className=''>
-    <div className="max-container flex flex-col py-20 max-md:py-12 max-md:px-6">
+    <div className="max-container flex flex-col py-36 max-md:py-12 max-md:px-6">
       <h1 className="text-4xl leading-relaxed max-md:leading-normal font-bold pb-6 max-md:text-3xl">Hey, Reacton dev here!
       <br />
           <span className="text-4xl leading-relaxed max-md:leading-normal font-normal max-md:text-2xl">Discover my stories and creative ideas.</span>
