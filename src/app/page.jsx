@@ -1,38 +1,47 @@
+'use client'
+
+
 import Image from "next/image";
 import Link from "next/link";
 
 export default function Home() {
 
-  const categories = [
-    { id: 1, 
+  const categories = [   
+    { id: 0, 
       name: 'fashion',
       alt: 'fashion category image',
-      img: 'https://images.unsplash.com/photo-1483985988355-763728e1935b'
+      img: 'https://images.unsplash.com/photo-1483985988355-763728e1935b',
+      color: 'bg-red-500'
     },
-    { id: 2,
+    { id: 1,
       name: 'food',
       alt: 'food category image',
-      img: 'https://images.unsplash.com/photo-1476224203421-9ac39bcb3327'
+      img: 'https://images.unsplash.com/photo-1476224203421-9ac39bcb3327',
+      color: 'bg-red-400'
     },
-    { id: 3,
+    { id: 2,
       name: 'coding',
       alt: 'coding category image',
-      img: 'https://images.unsplash.com/photo-1618477247222-acbdb0e159b3'
+      img: 'https://images.unsplash.com/photo-1618477247222-acbdb0e159b3',
+      color: '#fff'
     },
-    { id: 4,
+    { id: 3,
       name: 'style',
       alt: 'style category image',
-      img: 'https://images.unsplash.com/photo-1525299374597-911581e1bdef'
+      img: 'https://images.unsplash.com/photo-1525299374597-911581e1bdef',
+      color: '#fff'
     },
-    { id: 5,
+    { id: 4,
       name: 'travel',
       alt: 'travel category image',
-      img: 'https://images.unsplash.com/photo-1527631746610-bca00a040d60'
+      img: 'https://images.unsplash.com/photo-1527631746610-bca00a040d60',
+      color: 'bg-red-400' 
     },
-    { id: 6,
+    { id: 5,
       name: 'culture',
       alt: 'culture category image',
-      img: 'https://images.unsplash.com/photo-1519181245277-cffeb31da2e3'
+      img: 'https://images.unsplash.com/photo-1519181245277-cffeb31da2e3',
+      color: 'bg-orange-400'
     },
   ]
 
@@ -46,21 +55,63 @@ export default function Home() {
       title: 'Easiest way for React State Managment',
       desc: 'State management is one of the most important concepts in React world...'
     },
+  ]
+
+  const popularPosts = [
     {
-    id: 2,
-    img: 'https://journal.adyog.com/assets/img/zustand.png',
-    alt: 'post image',
-    date: '2023-08-28',
-    category: 'CODING',
-    title: 'Easiest way for React State Managment',
-    desc: 'State management is one of the most important concepts in React world...'
-    }   
+      id: 0,  
+      category: 'Travel',
+      color: 'bg-red-500',
+      title: 'A Journey Through Boemian Beauty: Exploring the Streets of Prague',
+      author: 'Joseph Owen',
+      date: '10.08.23'
+    },
+    {
+      id: 1,
+      category: 'Culture',
+      color: 'bg-orange-500',
+      title: 'A Journey Through Boemian Beauty: Exploring the Streets of Prague',
+      author: 'Joseph Owen',
+      date: '10.08.23'
+    },
+    {
+      id: 2,
+      category: 'Food',
+      color: 'bg-green-700',
+      title: 'A Journey Through Boemian Beauty: Exploring the Streets of Prague',
+      author: 'Joseph Owen',
+      date: '10.08.23'
+    },
+    {
+      id: 3,
+      category: 'Fashion',
+      color: 'bg-violet-600',
+      title: 'A Journey Through Boemian Beauty: Exploring the Streets of Prague',
+      author: 'Joseph Owen',
+      date: '10.08.23'
+    },
+    {
+      id: 4,
+      category: 'Coding',
+      color: 'bg-blue-600',
+      title: 'A Journey Through Boemian Beauty: Exploring the Streets of Prague',
+      author: 'Joseph Owen',
+      date: '10.08.23'
+    },
+    {
+      id: 4,
+      category: 'Style',
+      color: 'bg-fuchsia-500',
+      title: 'A Journey Through Boemian Beauty: Exploring the Streets of Prague',
+      author: 'Joseph Owen',
+      date: '10.08.23'
+    },
   ]
 
   return (
    <div className=''>
     {/* FIX py-36 max-md:py-24 */}
-    <div className="max-container flex flex-col pt-24 max-md:py-24 max-md:px-6">
+    <div className="max-container flex flex-col pt-24 pb-48 max-md:py-24 max-md:px-6">
       <h1 className="text-4xl leading-relaxed max-md:leading-normal font-bold pb-6 max-md:text-3xl">Hey, Reacton dev here!
       <br />
           <span className="text-4xl leading-relaxed max-md:leading-normal font-normal max-md:text-2xl">Discover my stories and creative ideas.</span>
@@ -111,14 +162,15 @@ export default function Home() {
         </section>
       {/* POPULAR CATEGORIES */}    
 
-        {/* FIX py-12 section */}
+        {/* RECENT POSTS / MOST POPULAR / CATEGORIES py-12 section */}
       <section className="flex max-md:flex-col">
         {/* POSTS BOX */}
-        <div className="flex flex-col w-3/4 gap-12 max-md:w-fit">
+        <div className="flex flex-col w-4/6 gap-12 max-md:w-fit">
         <h1 className="text-2xl">Recent Posts</h1>
         {/* POST BOX */}
         { posts.map((post) => (
-                  <div className="flex min-h-[340px] bg-green-800 max-md:flex-col max-md:h-[540px]" key={post.id}>
+          //  bg-green-800
+                  <div className="flex min-h-[340px] max-md:flex-col max-md:h-[540px]" key={post.id}>
                   {/* POST IMAGE BOX */}
                     <div className="flex flex-1 relative">
                     <Image src={post.img} fill alt={post.alt} className="object-cover"/>
@@ -127,7 +179,7 @@ export default function Home() {
           
                   {/* POST INFO BOX */}
                     <div className="flex flex-1 flex-col justify-center">
-                      <div className="flex flex-col gap-4 p-8">
+                      <div className="flex flex-col gap-4 px-8 max-md:p-0">
                         <div className="flex gap-2">   
                           <span className="text-gray-400">{post.date}</span>
                           <span className="text-red-950">{post.category}</span>
@@ -135,7 +187,7 @@ export default function Home() {
                         <h3 className="text-lg">
                         {post.title}
                         </h3>
-                        <p className="text-gray-400">
+                        <p className="text-gray-400 text-justify">
                           {post.desc}
                         </p>
                         <button className="bg-transparent shadow-md w-fit">Read More</button>
@@ -150,15 +202,38 @@ export default function Home() {
         </div>
         {/* POSTS BOX */}
 
-        {/* MOST POPULAR BOX */}
-        <div className="flex max-md:hidden w-1/4 flex-col h-[540px] bg-blue-400">
-        most popular
+        {/* MOST POPULAR CONTAINER  */}
+        <div className="flex max-md:hidden w-2/6 flex-col h-[465px] px-6 overflow-y-auto pb-6 relative">
+        <div className="flex flex-col gap-1 mb-8">
+          <span className="text-gray-400">What&apos;s hot</span>
+          <h3 className="text-2xl">Most Popular</h3>
+        </div>
+
+        {/* MOST POPULAR BOX  */}
+        <div className="flex flex-col gap-6">
+          {/* MOST POPULAR ITEM bg-amber-200 */}
+          {
+            (popularPosts).map((popularPost)=> (
+              <div className="flex flex-col gap-2" key={popularPost.id}>
+              <span className={`${popularPost.color} text-white font-extralight w-fit px-2 rounded-full`}>{popularPost.category}</span>
+              <p>{popularPost.title}</p>
+              <div className="flex gap-3 items-center">
+                <span className="text-sm">{popularPost.author}</span>
+                <span className="text-gray-700 text-sm">{popularPost.date}</span>
+              </div>
+              </div>
+            ))
+          }
+          {/* MOST POPULAR ITEM */}
+
         </div>
         {/* MOST POPULAR BOX */}
 
+        </div>
+        {/* MOST POPULAR CONTAINER */}
+
       </section>
-
-
+      {/* RECENT POSTS / MOST POPULAR / CATEGORIES py-12 section */}
     </div>
    </div>
   )
