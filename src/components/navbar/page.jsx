@@ -54,7 +54,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <div className={`fixed w-full p-4 z-10 scroll-smooth bg-transparent ${isNavbarFixed ? 'backdrop-filter backdrop-blur-lg transition-all duration-300' : ''}`}>
+    <div className={`fixed w-full p-4 z-10 scroll-smooth ${isNavbarFixed ? 'backdrop-filter backdrop-blur-lg transition-all duration-300' : ''}`}>
         <div className="max-container flex justify-between max-md:px-2">
         <div className="flex gap-4 max-md:hidden">
             <Link href='https://facebook.com'><Image src='/facebook.svg' alt="facebook icon" width={24} height={24} /></Link>

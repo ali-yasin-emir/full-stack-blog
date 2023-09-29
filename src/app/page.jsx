@@ -1,53 +1,55 @@
 'use client'
 
-
 import Image from "next/image";
 import Link from "next/link";
 
 export default function Home() {
+
+
+
 
   const categories = [   
     { id: 0, 
       name: 'fashion',
       alt: 'fashion category image',
       img: 'https://images.unsplash.com/photo-1483985988355-763728e1935b',
-      color: 'bg-red-500'
+      color: 'violet-600'
     },
     { id: 1,
       name: 'food',
       alt: 'food category image',
       img: 'https://images.unsplash.com/photo-1476224203421-9ac39bcb3327',
-      color: 'bg-red-400'
+      color: 'green-700'
     },
     { id: 2,
       name: 'coding',
       alt: 'coding category image',
       img: 'https://images.unsplash.com/photo-1618477247222-acbdb0e159b3',
-      color: '#fff'
+      color: 'blue-600'
     },
     { id: 3,
       name: 'style',
       alt: 'style category image',
       img: 'https://images.unsplash.com/photo-1525299374597-911581e1bdef',
-      color: '#fff'
+      color: 'fuchsia-500'
     },
     { id: 4,
       name: 'travel',
       alt: 'travel category image',
       img: 'https://images.unsplash.com/photo-1527631746610-bca00a040d60',
-      color: 'bg-red-400' 
+      color: 'red-500' 
     },
     { id: 5,
       name: 'culture',
       alt: 'culture category image',
       img: 'https://images.unsplash.com/photo-1519181245277-cffeb31da2e3',
-      color: 'bg-orange-400'
-    },
+      color: 'orange-500'
+    }
   ]
 
   const posts = [
     {
-      id: 1,
+      id: 0,
       img: 'https://journal.adyog.com/assets/img/zustand.png',
       alt: 'post image',
       date: '2023-08-28',
@@ -55,7 +57,16 @@ export default function Home() {
       title: 'Easiest way for React State Managment',
       desc: 'State management is one of the most important concepts in React world...'
     },
-  ]
+    {
+      id: 1,
+      img: 'https://images.pexels.com/photos/1658967/pexels-photo-1658967.jpeg',
+      alt: 'post image',
+      date: '2023-07-28',
+      category: 'CULTURE',
+      title: 'New Visual Feature is a Game Changer',
+      desc: 'Google just released a new feature for is Bard chatbot that catapults...'
+    },
+  ] 
 
   const popularPosts = [
     {
@@ -163,6 +174,7 @@ export default function Home() {
       {/* POPULAR CATEGORIES */}    
 
         {/* RECENT POSTS / MOST POPULAR / CATEGORIES py-12 section */}
+      <div className="flex max-md:flex-col">
       <section className="flex max-md:flex-col">
         {/* POSTS BOX */}
         <div className="flex flex-col w-4/6 gap-12 max-md:w-fit">
@@ -190,7 +202,7 @@ export default function Home() {
                         <p className="text-gray-400 text-justify">
                           {post.desc}
                         </p>
-                        <button className="bg-transparent shadow-md w-fit">Read More</button>
+                        <button className="w-fit py-2 shadow-[rgba(50,50,93,0.25)_0px_6px_12px_-2px,_rgba(0,0,0,0.3)_0px_3px_7px_-3px]">Read More</button>
                       </div>
                     </div>
                   {/* POST INFO BOX */}
@@ -202,37 +214,62 @@ export default function Home() {
         </div>
         {/* POSTS BOX */}
 
-        {/* MOST POPULAR CONTAINER  */}
-        <div className="flex max-md:hidden w-2/6 flex-col h-[465px] px-6 overflow-y-auto pb-6 relative">
-        <div className="flex flex-col gap-1 mb-8">
-          <span className="text-gray-400">What&apos;s hot</span>
-          <h3 className="text-2xl">Most Popular</h3>
-        </div>
+        <hr className="w-[1px] h-full mx-8 bg-gray-400" />
 
-        {/* MOST POPULAR BOX  */}
-        <div className="flex flex-col gap-6">
-          {/* MOST POPULAR ITEM bg-amber-200 */}
-          {
-            (popularPosts).map((popularPost)=> (
-              <div className="flex flex-col gap-2" key={popularPost.id}>
-              <span className={`${popularPost.color} text-white font-extralight w-fit px-2 rounded-full`}>{popularPost.category}</span>
-              <p>{popularPost.title}</p>
-              <div className="flex gap-3 items-center">
-                <span className="text-sm">{popularPost.author}</span>
-                <span className="text-gray-700 text-sm">{popularPost.date}</span>
+          {/* SIDE CONTAINER */}
+            <div className="flex flex-col gap-12 max-md:hidden w-2/6 px-6">
+            {/* MOST POPULAR CONTAINER  overflow-y-auto */}
+              <section className="flex flex-col h-[465px] overflow-y-scroll pb-6 relative">
+              <div className="flex flex-col gap-1 mb-8">
+                <span className="text-gray-400">What&apos;s hot</span>
+                <h3 className="text-2xl">Most Popular</h3>
               </div>
+      
+              {/* MOST POPULAR BOX  */}
+              <div className="flex flex-col gap-6">
+                {/* MOST POPULAR ITEM bg-amber-200 */}
+                {
+                  (popularPosts).map((popularPost)=> (
+                    <Link href='/' className="flex flex-col gap-2" key={popularPost.id}>
+                    <span className={`${popularPost.color} text-white font-extralight w-fit px-2 rounded-full`}>{popularPost.category}</span>
+                    <p>{popularPost.title}</p>
+                    <div className="flex gap-3 items-center">
+                      <span className="text-sm">{popularPost.author}</span>
+                      <span className="text-gray-700 text-sm">{popularPost.date}</span>
+                    </div>
+                    </Link>
+                  ))
+                }
+                {/* MOST POPULAR ITEM */}
+      
               </div>
-            ))
-          }
-          {/* MOST POPULAR ITEM */}
+              {/* MOST POPULAR BOX */}
+      
+              </section>
 
-        </div>
-        {/* MOST POPULAR BOX */}
-
-        </div>
-        {/* MOST POPULAR CONTAINER */}
+            {/* MOST POPULAR CONTAINER */}
+  
+            {/* CATEGORIES */}
+            <section className="flex flex-col h-[245px]">
+            <div className="flex flex-col gap-1 mb-8">
+                <span className="text-gray-400">Discover by topic</span>
+                <h3 className="text-2xl">Categories</h3>
+            </div>
+            <div className="flex flex-wrap gap-5 items-start">
+            {
+              categories.map((category) => (
+                // w-fit p-2 rounded-full bg-gray-400
+                  <Link href={category.name} key={category.id}  className={`text-${category.color} text-center border-[2px] border-gray-400 rounded-full p-2 w-24`}>{category.name}</Link>
+              ))
+            }
+            </div>
+            </section>
+            {/* CATEGORIES */}
+            </div>
+          {/* SIDE CONTAINER */}
 
       </section>
+      </div>
       {/* RECENT POSTS / MOST POPULAR / CATEGORIES py-12 section */}
     </div>
    </div>
