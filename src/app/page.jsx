@@ -6,7 +6,7 @@ import Link from "next/link";
 export default function Home() {
 
 
-
+  const MAX_LENGTH = 75;
 
   const categories = [   
     { id: 0, 
@@ -66,6 +66,15 @@ export default function Home() {
       title: 'New Visual Feature is a Game Changer',
       desc: 'Google just released a new feature for is Bard chatbot that catapults...'
     },
+    {
+      id: 2,
+      img: 'https://images.pexels.com/photos/15706251/pexels-photo-15706251/free-photo-of-kirmizi-araba-kentsel-durdurmak.jpeg',
+      alt: 'post image',
+      date: '2023-07-28',
+      category: 'CULTURE',
+      title: 'What nobody tells you about taking a career break',
+      desc: "Once we've learned how to do something we become unconsciously"
+    },
   ] 
 
   const popularPosts = [
@@ -119,10 +128,50 @@ export default function Home() {
     },
   ]
 
+  
+  const editorsPick = [
+    {
+      id: 0,  
+      category: 'Travel',
+      color: 'bg-red-500',
+      title: 'A Journey Through Boemian Beauty: Exploring the Streets of Prague',
+      author: 'Joseph Owen',
+      date: '10.08.23',
+      img: '/editors-pick/1.jpg'
+    },
+    {
+      id: 1,
+      category: 'Culture',
+      color: 'bg-orange-500',
+      title: 'A Journey Through Boemian Beauty: Exploring the Streets of Prague',
+      author: 'Joseph Owen',
+      date: '10.08.23',
+      img: '/editors-pick/2.jpg'
+    },
+    {
+      id: 2,
+      category: 'Food',
+      color: 'bg-green-700',
+      title: 'A Journey Through Boemian Beauty: Exploring the Streets of Prague',
+      author: 'Joseph Owen',
+      date: '10.08.23',
+      img: '/editors-pick/3.jpg'
+    },
+    {
+      id: 3,
+      category: 'Fashion',
+      color: 'bg-violet-600',
+      title: 'A Journey Through Boemian Beauty: Exploring the Streets of Prague',
+      author: 'Joseph Owen',
+      date: '10.08.23',
+      img: '/editors-pick/4.jpg'
+    },
+  ]
+
   return (
    <div className=''>
     {/* FIX py-36 max-md:py-24 */}
-    <div className="max-container flex flex-col pt-24 pb-48 max-md:py-24 max-md:px-6">
+    <div className="max-container flex flex-col py-24 max-md:py-24 max-md:px-6">
       <h1 className="text-4xl leading-relaxed max-md:leading-normal font-bold pb-6 max-md:text-3xl">Hey, Reacton dev here!
       <br />
           <span className="text-4xl leading-relaxed max-md:leading-normal font-normal max-md:text-2xl">Discover my stories and creative ideas.</span>
@@ -174,10 +223,10 @@ export default function Home() {
       {/* POPULAR CATEGORIES */}    
 
         {/* RECENT POSTS / MOST POPULAR / CATEGORIES py-12 section */}
-      <div className="flex max-md:flex-col">
+      <div className="flex max-md:flex-col gap-2">
       <section className="flex max-md:flex-col">
         {/* POSTS BOX */}
-        <div className="flex flex-col w-4/6 gap-12 max-md:w-fit">
+        <div className="flex flex-col w-4/6 gap-12 max-md:w-fit h-fit mb-10">
         <h1 className="text-2xl">Recent Posts</h1>
         {/* POST BOX */}
         { posts.map((post) => (
@@ -200,7 +249,9 @@ export default function Home() {
                         {post.title}
                         </h3>
                         <p className="text-gray-400 text-justify">
-                          {post.desc}
+                          {
+                            post.desc.length > MAX_LENGTH ? `${post.desc.substring(0, MAX_LENGTH)}...` : post.desc
+                          }
                         </p>
                         <button className="w-fit py-2 shadow-[rgba(50,50,93,0.25)_0px_6px_12px_-2px,_rgba(0,0,0,0.3)_0px_3px_7px_-3px]">Read More</button>
                       </div>
@@ -211,15 +262,20 @@ export default function Home() {
         }
         {/* POST BOX */}
 
+        <div className="flex w-full justify-between items-center py-4 px-12">
+          <button className="bg-red-400 text-white font-extralight p-2 w-[100px]">Previous</button>
+          <button className="bg-red-500 text-white font-extralight p-2 w-[100px]">Next</button>
+        </div>
+          
         </div>
         {/* POSTS BOX */}
 
-        <hr className="w-[1px] h-full mx-8 bg-gray-400" />
+        <hr className="w-[1px] h-full mx-12 bg-gray-400" />
 
           {/* SIDE CONTAINER */}
-            <div className="flex flex-col gap-12 max-md:hidden w-2/6 px-6">
+            <div className="flex flex-col gap-16 max-md:w-fit max-md w-2/6 px-6">
             {/* MOST POPULAR CONTAINER  overflow-y-auto */}
-              <section className="flex flex-col h-[465px] overflow-y-scroll pb-6 relative">
+              <section className="flex flex-col h-[465px] overflow-y-scroll pb-6 relative custom-scroll">
               <div className="flex flex-col gap-1 mb-8">
                 <span className="text-gray-400">What&apos;s hot</span>
                 <h3 className="text-2xl">Most Popular</h3>
@@ -250,7 +306,7 @@ export default function Home() {
             {/* MOST POPULAR CONTAINER */}
   
             {/* CATEGORIES */}
-            <section className="flex flex-col h-[245px]">
+            <section className="flex flex-col h-fit">
             <div className="flex flex-col gap-1 mb-8">
                 <span className="text-gray-400">Discover by topic</span>
                 <h3 className="text-2xl">Categories</h3>
@@ -259,12 +315,42 @@ export default function Home() {
             {
               categories.map((category) => (
                 // w-fit p-2 rounded-full bg-gray-400
-                  <Link href={category.name} key={category.id}  className={`text-${category.color} text-center border-[2px] border-gray-400 rounded-full p-2 w-24`}>{category.name}</Link>
+                  <Link href={category.name} key={category.id}  className={`bg-${category.color} text-white text-center border-[2px] rounded-full p-2 w-24`}>{category.name}</Link>
               ))
             }
             </div>
             </section>
             {/* CATEGORIES */}
+
+              {/* Editor's Pick */}
+              <section className="flex flex-col h-fit">
+              <div className="flex flex-col gap-1 mb-8">
+                <span className="text-gray-400">Choosen by the editor</span>
+                <h3 className="text-2xl">Editor&apos;s Pick</h3>
+              </div>
+              <div className="flex flex-col gap-6">
+                {/* MOST POPULAR ITEM bg-amber-200 */}
+                {
+                  (editorsPick).map((item)=> (
+                    <Link href='/' className="flex items-center gap-4 hover:bg-gray-500 p-2 transition-all ease-in-out duration-500 rounded-xl" key={item.id}>
+                    <Image width={64} height={64} src={item.img} alt="item img" className="rounded-full aspect-square object-cover"/>
+                   <div className="flex flex-col gap-2">
+                    <span className={`${item.color} text-white font-extralight w-fit px-2 rounded-full`}>{item.category}</span>
+                    <p>{item.title}</p>
+                    <div className="flex gap-3 items-center"> 
+                      <span className="text-sm">{item.author}</span>
+                      <span className="text-gray-700 text-sm">{item.date}</span>
+                    </div>
+                    </div>
+                    </Link>
+                  ))
+                }
+                {/* MOST POPULAR ITEM */}
+      
+              </div>
+              </section>
+              {/* Editor's Pick */}
+
             </div>
           {/* SIDE CONTAINER */}
 
