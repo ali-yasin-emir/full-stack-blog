@@ -243,17 +243,17 @@ export default function Home() {
                       <div className="flex flex-col gap-4 px-8 max-md:p-0">
                         <div className="flex gap-2">   
                           <span className="text-gray-400">{post.date}</span>
-                          <span className="text-red-950">{post.category}</span>
+                          <span className="text-emerald-600 font-medium">{post.category}</span>
                         </div>
                         <h3 className="text-lg">
                         {post.title}
                         </h3>
-                        <p className="text-gray-400 text-justify">
+                        <p className="text-gray-500 text-justify">
                           {
                             post.desc.length > MAX_LENGTH ? `${post.desc.substring(0, MAX_LENGTH)}...` : post.desc
                           }
                         </p>
-                        <button className="w-fit py-2 shadow-[rgba(50,50,93,0.25)_0px_6px_12px_-2px,_rgba(0,0,0,0.3)_0px_3px_7px_-3px]">Read More</button>
+                        <button className="w-fit p-2 shadow-[rgba(50,50,93,0.25)_0px_6px_12px_-2px,_rgba(0,0,0,0.3)_0px_3px_7px_-3px] border border-orange-500 transition-all ease-in-out duration-700 hover:bg-orange-500 hover:text-white hover:border hover:border-orange-500">Read More</button>
                       </div>
                     </div>
                   {/* POST INFO BOX */}
@@ -263,8 +263,8 @@ export default function Home() {
         {/* POST BOX */}
 
         <div className="flex w-full justify-between items-center py-4 px-12">
-          <button className="bg-red-400 text-white font-extralight p-2 w-[100px]">Previous</button>
-          <button className="bg-red-500 text-white font-extralight p-2 w-[100px]">Next</button>
+          <button className="bg-red-500 text-white font-extralight p-2 w-[100px]">Previous</button>
+          <button className="bg-red-700 text-white font-extralight p-2 w-[100px]">Next</button>
         </div>
           
         </div>
@@ -339,7 +339,7 @@ export default function Home() {
                     <p>{item.title}</p>
                     <div className="flex gap-3 items-center"> 
                       <span className="text-sm">{item.author}</span>
-                      <span className="text-gray-700 text-sm">{item.date}</span>
+                      <span className="text-gray-500 text-sm">{item.date}</span>
                     </div>
                     </div>
                     </Link>
